@@ -1,0 +1,150 @@
+body {
+    font-family: 'Proxima Nova', Arial, sans-serif;
+    margin: 0;
+    background: url('../media/backgroundweb.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: #ADB5BD;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0077B6;
+    padding: 10px 40px;
+    position: sticky;
+    top: 0;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a.active {
+    color: #00b4d8;
+    font-weight: 600;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #ADB5BD;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #00b4d8;
+}
+
+.main {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-inner img {
+  display: none;
+}
+
+.carousel-inner img.show {
+  display: block;
+}
+
+.carousel-button {
+    background: #0077B680;
+    border: none;
+    color: #ADB5BD;
+    font-size: 2rem;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.carousel-button:hover {
+    background: #0077B6cc;
+}
+
+.left {
+    margin-right: 20px;
+}
+
+.right {
+    margin-left: 20px;
+}
+
+.carousel-inner img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.5s ease-in-out;
+}
+
+.services-section {
+    margin: 60px auto;
+    text-align: center;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.services-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #00b4d8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, .8);
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1 1 300px;
+    max-width: 350px;
+    color: #ADB5BD;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    color: #00b4d8;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    color: #ADB5BD;
+}
