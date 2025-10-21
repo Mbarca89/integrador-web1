@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="media/logo.png">
+    <link rel="stylesheet" href="css/contacto.css">
+    <title>Contacto</title>
+    
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Solicitar cotización</h1>
+
+    <form id="contactForm" onsubmit="submitForm(event)">
+        <label for="name">Nombre y Apellido:</label><br>
+        <input type="text" id="name" name="name" required maxlength="50"><br>
+        <label for="email">Correo electrónico:</label><br>
+        <input type="email" id="email" name="email" required maxlength="100"><br>
+        <label for="message">Mensaje:</label><br>
+        <textarea id="message" name="message" required maxlength="500"></textarea><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <div id="formErrors"></div>
+
+    <div id="formData" style="display: none;">
+        <h2>Datos enviados:</h2>
+        <p id="submittedName"></p>
+        <p id="submittedEmail"></p>
+        <p id="submittedMessage"></p>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Limpiar errores anteriores
+            var formErrors = document.getElementById('formErrors');
+            formErrors.innerHTML = '';
+
+            // Obtener valores de los campos
+            var nameInput = document.getElementById('name');
+            var emailInput = document.getElementById('email');
+            var messageInput = document.getElementById('message');
+
+            var name = nameInput.value.trim();
+            var email = emailInput.value.trim();
+            var message = messageInput.value.trim();
+
+            // Validar campos
+            var isValid = true;
+
+            if (name.value == '') {
+                displayError('Por favor, ingresa tu nombre y apellido.');
+                isValid = false;
+            }
+
+            if (email === '') {
+                displayError('Por favor, ingresa tu correo electrónico.');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                displayError('Por favor, ingresa un correo electrónico válido.');
+                isValid = false;
+            }
+
+            if (message === '') {
+                displayError('Por favor, ingresa un mensaje.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Mostrar datos enviados
+                var formData = document.getElementById('formData');
+                formData.style.display = 'block';
+
+                var submittedName = document.getElementById('submittedName');
+                submittedName.textContent = 'Nombre y Apellido: ' + name;
+
+                var submittedEmail = document.getElementById('submittedEmail');
+                submittedEmail.textContent = 'Correo electrónico: ' + email;
+
+                var submittedMessage = document.getElementById('submittedMessage');
+                submittedMessage.textContent = 'Mensaje: ' + message;
+
+                // Limpiar campos
+                nameInput.value = '';
+                emailInput.value = '';
+                messageInput.value = '';
+            }
+        }
+
+        function displayError(message) {
+            var formErrors = document.getElementById('formErrors');
+            var errorParagraph = document.createElement('p');
+            errorParagraph.textContent = message;
+            formErrors.appendChild(errorParagraph);
+        }
+
+        function isValidEmail(email) {
+            // Expresión regular para validar correo electrónico
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+
+</html>
