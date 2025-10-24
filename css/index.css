@@ -57,14 +57,6 @@ body {
     overflow: hidden;
 }
 
-.carousel-inner img {
-  display: none;
-}
-
-.carousel-inner img.show {
-  display: block;
-}
-
 .carousel-button {
     background: #0077B680;
     border: none;
@@ -91,7 +83,6 @@ body {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    transition: opacity 0.5s ease-in-out;
 }
 
 .services-section {

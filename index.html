@@ -28,8 +28,8 @@
         <nav class="navbar">
             <ul>
                 <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="quienes-somos.html">Quiénes somos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="pages/quienes-somos.html">Quiénes somos</a></li>
+                <li><a href="pages/contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -38,10 +38,7 @@
         <section class="carousel">
             <button class="carousel-button left"><</button>
                     <div class="carousel-inner">
-                        <img src="media/camaras.webp" alt="Cámaras">
-                        <img src="media/pc.webp" alt="PC">
-                        <img src="media/web.webp" alt="Web">
-                        <img src="media/wifi.webp" alt="WiFi">
+                        <img src="media/camaras.webp" alt="Carousel" />
                     </div>
                     <button class="carousel-button right">></button>
         </section>
@@ -82,77 +79,7 @@
         <p>&copy; 2025 Seliam Solutions — Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        function loadPage(pageUrl) {
-            var pageContent = document.getElementById('pageContent')
-            var xhttp = new XMLHttpRequest()
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    pageContent.innerHTML = this.responseText
-                }
-            };
-            xhttp.open("GET", pageUrl, true)
-            xhttp.send()
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const images = document.querySelectorAll('.carousel-inner img')
-            const prev = document.querySelector('.carousel-button.left')
-            const next = document.querySelector('.carousel-button.right')
-            let index = 0
-            let interval
-
-            function showImage(index) {
-                images.forEach(img => img.classList.remove('show'))
-                images[index].classList.add('show')
-            }
-
-            showImage(index)
-
-            function nextImage() {
-                index = (index + 1) % images.length
-                showImage(index)
-            }
-
-            function prevImage() {
-                index = (index - 1 + images.length) % images.length
-                showImage(index)
-            }
-
-            prev.addEventListener('click', () => {
-                prevImage()
-                resetInterval()
-            })
-
-            next.addEventListener('click', () => {
-                nextImage()
-                resetInterval()
-            })
-
-            function startCarousel() {
-                interval = setInterval(nextImage, 3000)
-            }
-
-            function resetInterval() {
-                clearInterval(interval)
-                startCarousel()
-            }
-
-            startCarousel()
-        })
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const links = document.querySelectorAll('.navbar a')
-
-            links.forEach(link => {
-                link.addEventListener('click', e => {
-                    e.preventDefault()
-                    links.forEach(l => l.classList.remove('active'))
-                    link.classList.add('active')
-                })
-            })
-        })
-    </script>
+    <script src="../js/carousel.js"></script>
 
 </body>
 
