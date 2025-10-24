@@ -5,65 +5,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Seliam Solutions</title>
+    <meta name="description" content="Solicitá una cotización o realizá consultas sobre nuestros servicios. Contactate con Seliam Solutions en San Luis.">
+    <meta name="keywords" content="contacto, Seliam Solutions, servicio técnico, cámaras de seguridad, wifi, sitios web, San Luis, computadoras, redes">
     <link rel="icon" type="image/png" href="media/logo.png">
-    <link rel="stylesheet" href="css/contacto.css">
-    <title>Contacto</title>
-    
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Seliam Solutions - Contacto">
+    <meta property="og:description" content="Solicitá presupuestos o asistencia técnica con Seliam Solutions.">
+    <meta property="og:image" content="media/mini-fondo.png">
+    <meta property="og:url" content="https://mbarca89.github.io/contacto.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Seliam Solutions">
 </head>
 
 <body>
-    <header>
-        <nav>
+
+    <header class="header">
+        <div class="logo">
+            <img src="media/logo.png" alt="Logo Seliam Solutions">
+        </div>
+        <nav class="navbar">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="quienes-somos.html">Quiénes somos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <h1>Solicitar cotización</h1>
+    <main class="main">
+        <section class="contact-section">
+            <h1>Solicitar cotización</h1>
+            <p>Completá el siguiente formulario para solicitar una cotización o realizar consultas sobre nuestros servicios. Te responderemos a la brevedad.</p>
 
-    <form id="contactForm" onsubmit="submitForm(event)">
-        <label for="name">Nombre y Apellido:</label><br>
-        <input type="text" id="name" name="name" required maxlength="50"><br>
-        <label for="email">Correo electrónico:</label><br>
-        <input type="email" id="email" name="email" required maxlength="100"><br>
-        <label for="message">Mensaje:</label><br>
-        <textarea id="message" name="message" required maxlength="500"></textarea><br>
-        <input type="submit" value="Enviar">
-    </form>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <label for="name">Nombre y Apellido:</label><br>
+                <input type="text" id="name" name="name" required maxlength="50"><br><br>
 
-    <div id="formErrors"></div>
+                <label for="email">Correo electrónico:</label><br>
+                <input type="email" id="email" name="email" required maxlength="100"><br><br>
 
-    <div id="formData" style="display: none;">
-        <h2>Datos enviados:</h2>
-        <p id="submittedName"></p>
-        <p id="submittedEmail"></p>
-        <p id="submittedMessage"></p>
-    </div>
+                <label for="message">Mensaje:</label><br>
+                <textarea id="message" name="message" rows="5" required maxlength="500"></textarea><br><br>
+
+                <input type="submit" value="Enviar">
+            </form>
+
+            <div id="formErrors"></div>
+
+            <div id="formData" style="display: none;">
+                <h2>Datos enviados:</h2>
+                <p id="submittedName"></p>
+                <p id="submittedEmail"></p>
+                <p id="submittedMessage"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Seliam Solutions — Todos los derechos reservados.</p>
+        <p><a href="mailto:contacto@seliamsolutions.com">contacto@seliamsolutions.com</a></p>
+    </footer>
 
     <script>
         function submitForm(event) {
             event.preventDefault();
 
-            // Limpiar errores anteriores
-            var formErrors = document.getElementById('formErrors');
+            const formErrors = document.getElementById('formErrors');
             formErrors.innerHTML = '';
 
-            // Obtener valores de los campos
-            var nameInput = document.getElementById('name');
-            var emailInput = document.getElementById('email');
-            var messageInput = document.getElementById('message');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
 
-            var name = nameInput.value.trim();
-            var email = emailInput.value.trim();
-            var message = messageInput.value.trim();
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
 
-            // Validar campos
-            var isValid = true;
+            let isValid = true;
 
-            if (name.value == '') {
+            if (name === '') {
                 displayError('Por favor, ingresa tu nombre y apellido.');
                 isValid = false;
             }
@@ -82,20 +104,13 @@
             }
 
             if (isValid) {
-                // Mostrar datos enviados
-                var formData = document.getElementById('formData');
+                const formData = document.getElementById('formData');
                 formData.style.display = 'block';
 
-                var submittedName = document.getElementById('submittedName');
-                submittedName.textContent = 'Nombre y Apellido: ' + name;
+                document.getElementById('submittedName').textContent = 'Nombre y Apellido: ' + name;
+                document.getElementById('submittedEmail').textContent = 'Correo electrónico: ' + email;
+                document.getElementById('submittedMessage').textContent = 'Mensaje: ' + message;
 
-                var submittedEmail = document.getElementById('submittedEmail');
-                submittedEmail.textContent = 'Correo electrónico: ' + email;
-
-                var submittedMessage = document.getElementById('submittedMessage');
-                submittedMessage.textContent = 'Mensaje: ' + message;
-
-                // Limpiar campos
                 nameInput.value = '';
                 emailInput.value = '';
                 messageInput.value = '';
@@ -103,18 +118,18 @@
         }
 
         function displayError(message) {
-            var formErrors = document.getElementById('formErrors');
-            var errorParagraph = document.createElement('p');
+            const formErrors = document.getElementById('formErrors');
+            const errorParagraph = document.createElement('p');
             errorParagraph.textContent = message;
             formErrors.appendChild(errorParagraph);
         }
 
         function isValidEmail(email) {
-            // Expresión regular para validar correo electrónico
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
     </script>
+
 </body>
 
 </html>
