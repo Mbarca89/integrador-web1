@@ -61,6 +61,7 @@ function displayError(message) {
     const formErrors = document.getElementById('formErrors');
     const errorParagraph = document.createElement('p');
     errorParagraph.textContent = message;
+    errorParagraph.classList.add('error-message');
     formErrors.appendChild(errorParagraph);
 }
 
