@@ -19,6 +19,9 @@ function submitForm(event) {
     if (name === '') {
         displayError('Por favor, ingresa tu nombre y apellido.');
         isValid = false;
+    } else if (name.length > 50) {
+        displayError('El nombre y apellido no pueden superar los 50 caracteres.');
+        isValid = false;
     }
 
     if (email === '') {
@@ -27,18 +30,24 @@ function submitForm(event) {
     } else if (!isValidEmail(email)) {
         displayError('Por favor, ingresa un correo electrónico válido.');
         isValid = false;
+    } else if (email.length > 100) {
+        displayError('El correo electrónico no puede superar los 100 caracteres.');
+        isValid = false;
     }
 
     if (phone === '') {
         displayError('Por favor, ingresá tu teléfono.');
         isValid = false;
     } else if (!/^[0-9]{10}$/.test(phone)) {
-        displayError('Por favor, ingresá un teléfono válido sin 0 y sin 15.');
+        displayError('Ingresá un teléfono válido sin 0 y sin 15 (solo 10 dígitos).');
         isValid = false;
     }
 
     if (message === '') {
         displayError('Por favor, ingresa un mensaje.');
+        isValid = false;
+    } else if (message.length > 500) {
+        displayError('El mensaje no puede superar los 500 caracteres.');
         isValid = false;
     }
 
