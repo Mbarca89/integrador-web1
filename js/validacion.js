@@ -1,9 +1,6 @@
 function submitForm(event) {
     event.preventDefault();
 
-    const formErrors = document.getElementById('formErrors');
-    formErrors.innerHTML = '';
-
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
@@ -17,37 +14,37 @@ function submitForm(event) {
     let isValid = true;
 
     if (name === '') {
-        displayError('Por favor, ingresa tu nombre y apellido.');
+        displayError('Por favor, ingresa tu nombre y apellido.', 'nameInput');
         isValid = false;
     } else if (name.length > 50) {
-        displayError('El nombre y apellido no pueden superar los 50 caracteres.');
+        displayError('El nombre y apellido no pueden superar los 50 caracteres.', 'nameInput');
         isValid = false;
     }
 
     if (email === '') {
-        displayError('Por favor, ingresa tu correo electrónico.');
+        displayError('Por favor, ingresa tu correo electrónico.', 'emailInput');
         isValid = false;
     } else if (!isValidEmail(email)) {
-        displayError('Por favor, ingresa un correo electrónico válido.');
+        displayError('Por favor, ingresa un correo electrónico válido.', 'emailInput');
         isValid = false;
     } else if (email.length > 100) {
-        displayError('El correo electrónico no puede superar los 100 caracteres.');
+        displayError('El correo electrónico no puede superar los 100 caracteres.', 'emailInput');
         isValid = false;
     }
 
     if (phone === '') {
-        displayError('Por favor, ingresá tu teléfono.');
+        displayError('Por favor, ingresá tu teléfono.', 'phoneInput');
         isValid = false;
     } else if (!/^[0-9]{10}$/.test(phone)) {
-        displayError('Ingresá un teléfono válido sin 0 y sin 15 (solo 10 dígitos).');
+        displayError('Ingresá un teléfono válido sin 0 y sin 15 (solo 10 dígitos).', 'phoneInput');
         isValid = false;
     }
 
     if (message === '') {
-        displayError('Por favor, ingresa un mensaje.');
+        displayError('Por favor, ingresa un mensaje.', 'messageInput');
         isValid = false;
     } else if (message.length > 500) {
-        displayError('El mensaje no puede superar los 500 caracteres.');
+        displayError('El mensaje no puede superar los 500 caracteres.', 'messageInput');
         isValid = false;
     }
 
@@ -66,12 +63,12 @@ function submitForm(event) {
     }
 }
 
-function displayError(message) {
-    const formErrors = document.getElementById('formErrors');
-    const errorParagraph = document.createElement('p');
+function displayError(message, element) {
+    const errorElement = document.getElementById(element);
+    const errorParagraph = document.createElement('span');
     errorParagraph.textContent = message;
     errorParagraph.classList.add('error-message');
-    formErrors.appendChild(errorParagraph);
+    errorElement.appendChild(errorParagraph);
 }
 
 function isValidEmail(email) {

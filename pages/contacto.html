@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Seliam Solutions</title>
-    <meta name="description" content="Solicitá una cotización o realizá consultas sobre nuestros servicios. Contactate con Seliam Solutions en San Luis.">
-    <meta name="keywords" content="contacto, Seliam Solutions, servicio técnico, cámaras de seguridad, wifi, sitios web, San Luis, computadoras, redes">
+    <meta name="description"
+        content="Solicitá una cotización o realizá consultas sobre nuestros servicios. Contactate con Seliam Solutions en San Luis.">
+    <meta name="keywords"
+        content="contacto, Seliam Solutions, servicio técnico, cámaras de seguridad, wifi, sitios web, San Luis, computadoras, redes">
     <link rel="icon" type="image/png" href="media/logo.png">
     <link rel="stylesheet" href="../css/contacto.css">
 
@@ -38,24 +40,30 @@
     <main class="main">
         <section class="contact-section">
             <h1>Solicitar cotización</h1>
-            <p>Completá el siguiente formulario para solicitar una cotización o realizar consultas sobre nuestros servicios. Te responderemos a la brevedad.</p>
+            <p>Completá el siguiente formulario para solicitar una cotización o realizar consultas sobre nuestros
+                servicios. Te responderemos a la brevedad.</p>
+            <div class="form-container">
+                <form id="contactForm" onsubmit="submitForm(event)" novalidate>
+                    <div class="form-group" id="nameInput">
+                        <label for="name">Nombre y Apellido:</label>
+                        <input id="name" name="name">                      
+                    </div>
+                    <div class="form-group" id="emailInput">
+                        <label for="email">Correo electrónico:</label>
+                        <input id="email" name="email">
+                    </div>
+                    <div class="form-group" id="phoneInput">
+                        <label for="phone">Teléfono:</label>
+                        <input id="phone" name="phone">
+                    </div>
+                    <div class="form-group" id="messageInput">
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" name="message" rows="5"></textarea>
+                    </div>
 
-            <form id="contactForm" onsubmit="submitForm(event)" novalidate>
-                
-                <label for="name">Nombre y Apellido:</label><br>
-                <input id="name" name="name"><br><br>
-
-                <label for="email">Correo electrónico:</label><br>
-                <input id="email" name="email"><br><br>
-
-                <label for="phone">Teléfono:</label><br>
-                <input id="phone" name="phone"><br><br>
-
-                <label for="message">Mensaje:</label><br>
-                <textarea id="message" name="message" rows="5"></textarea><br><br>
-
-                <input type="submit" value="Enviar">
-            </form>
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
 
             <div id="formErrors"></div>
 
