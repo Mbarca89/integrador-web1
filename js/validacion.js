@@ -1,6 +1,8 @@
 function submitForm(event) {
     event.preventDefault();
 
+    document.querySelectorAll('.error-message').forEach(el => el.remove());
+    
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
