@@ -118,3 +118,12 @@ body {
     }
 }
 
+.no-show {
+    display: none;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+}
+

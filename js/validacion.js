@@ -2,7 +2,7 @@ function submitForm(event) {
     event.preventDefault();
 
     document.querySelectorAll('.error-message').forEach(el => el.remove());
-    
+
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
@@ -52,11 +52,29 @@ function submitForm(event) {
 
     if (isValid) {
         const formData = document.getElementById('formData');
-        formData.style.display = 'block';
 
-        document.getElementById('submittedName').textContent = 'Nombre y Apellido: ' + name;
-        document.getElementById('submittedEmail').textContent = 'Correo electrónico: ' + email;
-        document.getElementById('submittedMessage').textContent = 'Mensaje: ' + message;
+        while(formData.hasChildNodes()){
+            formData.removeChild(formData.firstChild);
+        }
+
+        formData.classList.remove('no-show');
+        formData.classList.add('show');
+
+        const submittedName = document.createElement('p');
+        const submittedEmail = document.createElement('p');
+        const submittedPhone = document.createElement('p');
+        const submittedMessage = document.createElement('p');
+
+
+        submittedName.textContent = 'Nombre y Apellido: ' + name;
+        submittedEmail.textContent = 'Correo electrónico: ' + email;
+        submittedPhone.textContent = 'Teléfono: ' + phone;
+        submittedMessage.textContent = 'Mensaje: ' + message;
+
+        formData.appendChild(submittedName);
+        formData.appendChild(submittedEmail);
+        formData.appendChild(submittedPhone);
+        formData.appendChild(submittedMessage);
 
         nameInput.value = '';
         emailInput.value = '';
