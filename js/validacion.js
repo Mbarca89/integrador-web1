@@ -53,24 +53,27 @@ function submitForm(event) {
     if (isValid) {
         const formData = document.getElementById('formData');
 
-        while(formData.hasChildNodes()){
+        while (formData.hasChildNodes()) {
             formData.removeChild(formData.firstChild);
         }
 
         formData.classList.remove('no-show');
         formData.classList.add('show');
 
+        const heading = document.createElement('h2');
         const submittedName = document.createElement('p');
         const submittedEmail = document.createElement('p');
         const submittedPhone = document.createElement('p');
         const submittedMessage = document.createElement('p');
 
 
+        heading.textContent = 'Datos enviados:';
         submittedName.textContent = 'Nombre y Apellido: ' + name;
         submittedEmail.textContent = 'Correo electrónico: ' + email;
         submittedPhone.textContent = 'Teléfono: ' + phone;
         submittedMessage.textContent = 'Mensaje: ' + message;
 
+        formData.appendChild(heading);
         formData.appendChild(submittedName);
         formData.appendChild(submittedEmail);
         formData.appendChild(submittedPhone);
